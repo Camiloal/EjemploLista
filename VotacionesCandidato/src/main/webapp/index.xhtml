@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./master.xhtml">
+
+            <ui:define name="left">
+
+                <center>
+
+                    <h:form id="form2">
+                        <p:graphicImage name="/voto.jpg" width="150"/>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <p:commandButton value="Votaciones" action="votaciones.xhtml"/>
+                    </h:form>
+                </center>
+
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="form" enctype="multipart/form-data">
+                    <p:growl id="msgs" showDetail="true" />
+                    <center>
+
+
+                        <h2>Registro de Candidatos</h2>
+                        <h:panelGrid columns="1" >                 
+                            <p:inputText id="cedula" placeholder="Cédula" value="#{index.candidato.cedula}" required="true"/>   
+                            <p:inputText id="nombre" placeholder="Nombres" value="#{index.candidato.nombre}" required="true"/>
+                            <p:inputText id="apellido" placeholder="Apellidos" value="#{index.candidato.apellido}" required="true"/>
+                            <p:calendar id="button" placeholder="Fecha Nacimiento" value="#{index.candidato.nacimiento}" showOn="button" required="true" />
+                            <p:growl id="messages" showDetail="true" />
+
+                        </h:panelGrid>
+
+                        <h:panelGrid>
+                            <p:fileUpload value="#{index.file}" mode="simple" skinSimple="true" required="true"/>
+
+                            <p:commandButton type="submit" update="form" value="Subir" ajax="false" action="#{index.upload()}"/>
+
+                        </h:panelGrid>
+                        <br></br>
+
+
+                        <p:commandButton value="Guardar" update="form" action="#{index.agregarCandidato()}" />
+
+                    </center>
+
+
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

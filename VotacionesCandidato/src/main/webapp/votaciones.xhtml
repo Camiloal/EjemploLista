@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./master.xhtml">
+
+
+            <ui:define name="content">
+                <style type="text/css">
+                    .value {
+                        font-weight: bold;
+                    }
+                </style>
+
+
+                <h:form id="form">
+                    <p:dataGrid var="can" value="#{votaciones.lista.candidatos}" columns="4"
+                                rows="12" paginator="true" id="cars"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            Votaciones
+                        </f:facet>
+
+                        <p:panel header="#{can.nombre}" style="text-align:center">
+                            <h:panelGrid columns="1" style="width:100%">
+                                <p:graphicImage name="/imagenes/#{can.foto}"  width="200"/> 
+
+                                <h:outputText value="#{can.cedula}" />
+
+                                <p:commandLink action="#{votaciones.sumarVoto()}" update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                                    <h:outputText value="Votar" styleClass="pi pi-search" style="margin:0 auto;"/>
+                                    <f:setPropertyActionListener value="#{can}" target="#{votaciones.candidato}" />
+                                </p:commandLink>
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>
+
+                    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="carDetail" style="text-align:center;">
+                            <p:panelGrid    columns="2" rendered="#{not empty votaciones.candidato}" columnClasses="label,value">
+                                <f:facet name="header">
+                                    <p:graphicImage name="/imagenes/#{can.foto}" width="200"/> 
+                                </f:facet>
+
+                                
+                                <h:outputText value="Nombre:" />
+                                <h:outputText value="#{votaciones.candidato.nombre}" />
+                                <h:outputText value="Cedula:" />
+                                <h:outputText value="#{votaciones.candidato.cedula}" />
+                                <h:outputText value="Votos:" />
+                                <h:outputText value="#{votaciones.candidato.votos}" />
+                                
+
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

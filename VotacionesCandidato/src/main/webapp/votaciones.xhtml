@@ -20,6 +20,8 @@
 
 
                 <h:form id="form">
+
+                    <p:growl id="mensa" showDetail="true" />
                     <p:dataGrid var="can" value="#{votaciones.lista.candidatos}" columns="4"
                                 rows="12" paginator="true" id="cars"
                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -35,34 +37,20 @@
 
                                 <h:outputText value="#{can.cedula}" />
 
-                                <p:commandLink action="#{votaciones.sumarVoto()}" update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                                    <h:outputText value="Votar" styleClass="pi pi-search" style="margin:0 auto;"/>
+                                <p:commandLink  update="form" action="#{votaciones.sumarVoto()}" title="View Detail">
+                                    <h:outputText value="Votar"  styleClass="pi pi-search" style="margin:0 auto;"/>
                                     <f:setPropertyActionListener value="#{can}" target="#{votaciones.candidato}" />
                                 </p:commandLink>
                             </h:panelGrid>
                         </p:panel>
 
                     </p:dataGrid>
+                    <center>
+                        <p:commandButton update="form" value="Cerrar Votaion" action="#{votaciones.ganador()}" />
 
-                    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                        <p:outputPanel id="carDetail" style="text-align:center;">
-                            <p:panelGrid    columns="2" rendered="#{not empty votaciones.candidato}" columnClasses="label,value">
-                                <f:facet name="header">
-                                    <p:graphicImage name="/imagenes/#{can.foto}" width="200"/> 
-                                </f:facet>
+                        <p:chart id="votes" type="pie" model="#{votaciones.lista.livePieModel}" style="width:400px;height:300px"/>
 
-                                
-                                <h:outputText value="Nombre:" />
-                                <h:outputText value="#{votaciones.candidato.nombre}" />
-                                <h:outputText value="Cedula:" />
-                                <h:outputText value="#{votaciones.candidato.cedula}" />
-                                <h:outputText value="Votos:" />
-                                <h:outputText value="#{votaciones.candidato.votos}" />
-                                
-
-                            </p:panelGrid>
-                        </p:outputPanel>
-                    </p:dialog>
+                    </center>
                 </h:form>
 
             </ui:define>

@@ -29,9 +29,12 @@
                     
                     <center>
                         <p:graphicImage name="/voto.jpg" width="150"/>
-                        
                     </center>
                 </ui:insert>
+                <h:form>
+                     <p:commandButton value="Votaciones" action="votaciones.xhtml"/>
+                  <p:commandButton value="Agregar" action="index.xhtml"/>
+                </h:form>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>

@@ -21,7 +21,6 @@
                         <br></br>
                         <br></br>
                         <br></br>
-                        <p:commandButton value="Votaciones" action="votaciones.xhtml"/>
                     </h:form>
                 </center>
 
@@ -41,18 +40,18 @@
                             <p:calendar id="button" placeholder="Fecha Nacimiento" value="#{index.candidato.nacimiento}" showOn="button" required="true" />
                             <p:growl id="messages" showDetail="true" />
 
-                        </h:panelGrid>
-
-                        <h:panelGrid>
                             <p:fileUpload value="#{index.file}" mode="simple" skinSimple="true" required="true"/>
 
-                            <p:commandButton type="submit" update="form" value="Subir" ajax="false" action="#{index.upload()}"/>
 
+                        
+                        
                         </h:panelGrid>
+
+                       
                         <br></br>
 
 
-                        <p:commandButton value="Guardar" update="form" action="#{index.agregarCandidato()}" />
+                        <p:commandButton value="Guardar" ajax="false" update="form" action="#{index.agregarCandidato()}" />
 
                     </center>
 

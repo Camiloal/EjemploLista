@@ -26,7 +26,7 @@ import org.primefaces.model.UploadedFile;
  * @author diego
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class Index implements Serializable {
 
     /**
@@ -58,13 +58,14 @@ public class Index implements Serializable {
 
     public void agregarCandidato() {
         Controlador controlador = new Controlador();
-
         try {
             if (file != null) {
+                System.err.println("qwew");
             String imagen = img.save(getFile().getFileName(), getFile().getInputstream());
             candidato.setFoto(imagen);
             if (controlador.agregarCandidato(candidato, lista.getCandidatos())) {
-                lista.getCandidatos().add(candidato);
+                
+                lista.agregarCandidato(candidato);
                 System.out.println(candidato.getFoto());
                 
                 FacesMessage msg = new FacesMessage("Aviso", "Candidato Agregado!!");
@@ -76,13 +77,7 @@ public class Index implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }   
-    
-    public void upload() throws IOException {
-        if (file != null) {
-            FacesMessage message = new FacesMessage("Succesful", getFile().getFileName() + " is uploaded.");
-            FacesContext.getCurrentInstance().addMessage(null, message);
-        }
-    }
+  
     
     
     public UploadedFile getFile() {

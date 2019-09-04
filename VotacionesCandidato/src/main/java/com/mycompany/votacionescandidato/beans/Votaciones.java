@@ -22,7 +22,8 @@ import org.primefaces.model.chart.PieChartModel;
 
 /**
  *
- * @author diego
+ * @author Camilo Alvarez
+ * @author Hernan Henandez
  */
 @ManagedBean
 @ViewScoped
@@ -30,13 +31,13 @@ public class Votaciones implements Serializable {
 
     
     /**
-     *
+     *Etiqueta que sirve para traer los datos de otro bean 
      */
     @ManagedProperty("#{lista}")
     private Lista lista;
     
     /**
-     *
+     *se crea la variable candidato
      */
     private Candidato candidato;
 
@@ -48,17 +49,25 @@ public class Votaciones implements Serializable {
         
     }
 
+    /**
+     * Metdodo que hace publica la funcion 
+     */
     public Candidato getCandidato() {
         System.out.print(candidato);
         return candidato;
     }
-
+    
+    /**
+     * Metdodo que hace publica la funcion 
+     */
     public void setCandidato(Candidato candidato) {
         //  System.out.print(candidato);
         this.candidato = candidato;
     }
 
-
+    /**
+     * Metdodo que suma un voto al candidato escogido  
+     */
     public void sumarVoto() {
         candidato.setVotos(candidato.getVotos() + 1);
       
@@ -68,6 +77,9 @@ public class Votaciones implements Serializable {
 
     }
     
+    /**
+     * metodo que muestra quien fue el ganador
+     */
     public void ganador(){
         int cont=0;
         Candidato c = new Candidato();

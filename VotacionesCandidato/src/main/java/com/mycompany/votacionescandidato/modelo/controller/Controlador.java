@@ -11,14 +11,23 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
- * @author diego
+ *@author Hernan Hernandez
+ * @author Camilo Alvarez
  */
 public class Controlador {
-
+    /**
+     * Constructor vacio
+     */
     public Controlador() {
     }
 
+    /**
+     * metodo donde se suma un voto al postuado 
+     * @param candidato
+     * @param candidatos
+     * @return
+     * @throws Exception 
+     */
     public String votar(Candidato candidato, List<Candidato> candidatos) throws Exception {
         for (Candidato c : (ArrayList<Candidato>) candidatos) {
             if (c.equals(candidato)) {
@@ -31,7 +40,13 @@ public class Controlador {
     }
     
     
-
+/**
+ * meodo que verifica que el uduario no exista
+ * @param candidato
+ * @param candidatos
+ * @return
+ * @throws Exception 
+ */
     public boolean agregarCandidato(Candidato candidato, List<Candidato> candidatos) throws Exception {
         for (Candidato c : (ArrayList<Candidato>) candidatos) {
             if (Objects.equals(c.getCedula(), candidato.getCedula())) {

@@ -22,20 +22,20 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 /**
- *
- * @author diego
+ *@Hernan Hernandez
+ * @author Camilo Alvarez
  */
 @ManagedBean
 @RequestScoped
 public class Index implements Serializable {
 
     /**
-     *
+     *Se instanic candidato
      */
     private Candidato candidato;
 
     /**
-     *
+     *Etiqueta que isrve para traer los datos de otros bean 
      */
     @ManagedProperty("#{lista}")
     private Lista lista;
@@ -55,7 +55,9 @@ public class Index implements Serializable {
         img = new GuardarImagen();
         
     }
-
+    /**
+     * metodo que sirve para guardar en la lista los candidatos
+     */
     public void agregarCandidato() {
         Controlador controlador = new Controlador();
         try {
@@ -79,35 +81,53 @@ public class Index implements Serializable {
     }   
   
     
-    
+    /**
+     * metodo que hace la variable publica 
+     */
     public UploadedFile getFile() {
         return file;
     }
-
+    /**
+     * metodo que hace la variable publica 
+     */
     public void setFile(UploadedFile file) {
         this.file = file;
     }
-
+    
+     /**
+     * metodo que hace la variable publica 
+     */
     public Lista getLista() {
         return lista;
     }
-
+    /**
+     * metodo que hace la variable publica 
+     */
     public void setLista(Lista lista) {
         this.lista = lista;
     }
-
+    
+     /**
+     * metodo que hace la variable publica 
+     */
     public Candidato getCandidato() {
         return candidato;
     }
-
+     /**
+     * metodo que hace la variable publica 
+     */
     public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
     }
-
+     /**
+     * metodo que hace la variable publica 
+     */
     public GuardarImagen getImg() {
         return img;
     }
-
+        /**
+     * metodo que hace la variable publica 
+     */
     public void setImg(GuardarImagen img) {
         this.img = img;
     }

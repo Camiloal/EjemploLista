@@ -13,11 +13,13 @@ import java.io.OutputStream;
 import java.util.Date;
 
 /**
- *
+ *@autor Hernan Hernandez
  * @author CamiloAlvarez
  */
 public class GuardarImagen {
-    
+    /**
+     * ruta dnde se va a guardar la imagen 
+     */
     private String path = "E:\\linea 3\\Votaciones\\VotacionesCandidato\\src\\main\\webapp\\resources\\imagenes\\";
 
     /**
@@ -27,7 +29,7 @@ public class GuardarImagen {
     }
     
     /**
-     * metodo encargado de guardar la imagen
+     * metodo donde se guarda la imagen 
      * @param fileName
      * @param in
      * @return 

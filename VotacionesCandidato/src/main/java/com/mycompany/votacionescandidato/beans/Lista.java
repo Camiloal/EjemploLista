@@ -15,13 +15,16 @@ import javax.faces.bean.SessionScoped;
 import org.primefaces.model.chart.PieChartModel;
 
 /**
- *
- * @author diego
+ *@Hernan Hernandez
+ * @author Camilo Alvarez
  */
 @ManagedBean
 @ApplicationScoped
 public class Lista implements Serializable {
 
+    /**
+     * Se instancian las variables
+     */
     private List<Candidato> candidatos;
     private PieChartModel livePieModel;
 
@@ -33,6 +36,10 @@ public class Lista implements Serializable {
         livePieModel = new PieChartModel();
     }
     
+    /**
+     * metodo que se utiliza para añadir un candidato
+     * @param can 
+     */
     public void agregarCandidato(Candidato can){
          getCandidatos().add(can);
          iniciarGrafica();
@@ -51,7 +58,9 @@ public class Lista implements Serializable {
     public void setCandidatos(List<Candidato> candidatos) {
         this.candidatos = candidatos;
     }
-    
+    /**
+     * metodo donde se inicia la grafca 
+     */
     public void iniciarGrafica() {
         setLivePieModel(new PieChartModel());
         for (Candidato col : getCandidatos()) {
